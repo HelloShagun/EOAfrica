@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Monitoring Methodology Flowchart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .step {
+            background: linear-gradient(145deg, #f8f9ff, #e3e8ff);
+            border: 2px solid #4f46e5;
+            border-radius: 10px;
+            padding: 15px;
+            width: 95%;
+            max-width: 950px;
+            position: relative;
+            box-shadow: 0 3px 8px rgba(79, 70, 229, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.25);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .step-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            padding-left: 15px;
+        }
+        
+        .step-content {
+            color: #4a5568;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+        
+        .data-sources {
+            display: flex;
+            justify-content: space-around;
+            margin: 12px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .data-box {
+            background: linear-gradient(145deg, #fef3c7, #fcd34d);
+            border: 2px solid #f59e0b;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            min-width: 100px;
+            font-weight: 600;
+            color: #92400e;
+            font-size: 11px;
+        }
+        
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 15px solid #4f46e5;
+            margin: 5px auto;
+        }
+        
+        .validation-sites {
+            display: flex;
+            justify-content: space-around;
+            margin: 12px 0;
+            gap: 15px;
+        }
+        
+        .site-box {
+            background: linear-gradient(145deg, #ecfccb, #bef264);
+            border: 2px solid #65a30d;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+            flex: 1;
+            color: #365314;
+            font-weight: 600;
+            font-size: 11px;
+        }
+        
+        .tech-stack {
+            background: linear-gradient(145deg, #e0f2fe, #81d4fa);
+            border: 2px solid #0288d1;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 12px 0;
+            text-align: center;
+            color: #01579b;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .challenge-box {
+            background: linear-gradient(145deg, #fce4ec, #f8bbd9);
+            border: 2px solid #e91e63;
+            border-radius: 6px;
+            padding: 8px;
+            margin: 8px 0;
+            color: #880e4f;
+            font-size: 11px;
+            font-style: italic;
+        }
+        
+        .output-box {
+            background: linear-gradient(145deg, #f3e8ff, #c4b5fd);
+            border: 2px solid #8b5cf6;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 8px 0;
+            color: #5b21b6;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .integration-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+        
+        .plus-sign {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+        
+        .equals-sign {
+            font-size: 20px;
+            font-weight: bold;
+            color: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Satellite-Based Water Monitoring Methodology</h1>
+        
+        <div class="flowchart">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">Data Pairing and Model Training</div>
+                <div class="step-content">
+                    <div class="data-sources">
+                        <div class="data-box">Digital Earth Africa<br>Water Extent</div>
+                        <div class="data-box">Sentinel-2<br>(Optical)</div>
+                        <div class="data-box">Sentinel-1<br>(SAR)</div>
+                    </div>
+                    
+                    <div class="challenge-box">
+                        <strong>Challenges:</strong> Cloud cover in optical data, water-sand distinction in arid regions
+                    </div>
+                    
+                    <p><strong>Semi-supervised Learning Approach:</strong> Combines labeled and unlabeled data for efficient processing of large satellite datasets. Subset will be hand-labeled for high-quality training samples.</p>
+                    
+                    <p><strong>Solution:</strong> European Co-PI's published methodology for flood mapping in sandy environments will be adopted.</p>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Integrated Water Extent Mapping</div>
+                <div class="step-content">
+                    <div class="integration-flow">
+                        <div class="data-box">Sentinel-1<br>SAR Data</div>
+                        <div class="plus-sign">+</div>
+                        <div class="data-box">Sentinel-2<br>Optical Data</div>
+                        <div class="equals-sign">=</div>
+                        <div class="output-box">Gap-free Time Series<br>Lake Extent Maps</div>
+                    </div>
+                    
+                    <p><strong>Objective:</strong> Generate the most reliable, gap-free time series of lake extent through data fusion. This forms the foundation for all subsequent analyses.</p>
+                    
+                    <div class="challenge-box">
+                        <strong>Critical Note:</strong> Accurate water extent mapping is essential—errors here propagate to water quality and volume estimates.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Water Quality Assessment</div>
+                <div class="step-content">
+                    <div class="data-sources">
+                        <div class="data-box">Landsat<br>Constellation</div>
+                        <div class="data-box">Sentinel-2<br>Optical</div>
+                    </div>
+                    
+                    <p><strong>Method:</strong> Use robust water extent maps as masks to estimate water quality parameters from optical sensors, focusing only on confirmed water pixels.</p>
+                    
+                    <div class="output-box">
+                        <strong>Parameters:</strong> Turbidity, Chlorophyll-a, and other water quality indicators
+                    </div>
+                    
+                    <p><strong>Benefits:</strong> Targeted approach improves both efficiency and accuracy by eliminating non-water pixels.</p>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">Water Level and Depth Analysis</div>
+                <div class="step-content">
+                    <div class="data-sources">
+                        <div class="data-box">SWOT<br>Altimeter</div>
+                        <div class="data-box">Other Altimeter<br>Data Sources</div>
+                    </div>
+                    
+                    <p><strong>Analysis:</strong> Extract altimeter data to analyze changes in water level and infer variations in lake volume over time.</p>
+                    
+                    <div class="output-box">
+                        <strong>Outputs:</strong> Water level changes, Lake volume variations, Temporal trends
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-title">Validation and Adaptability Testing</div>
+                <div class="step-content">
+                    <div class="validation-sites">
+                        <div class="site-box">
+                            <strong>Lake Bosomtwe (Ghana)</strong><br>
+                            • Long-term in-situ data<br>
+                            • Local partnerships<br>
+                            • Field validation<br>
+                            • Community engagement
+                        </div>
+                        <div class="site-box">
+                            <strong>Lake Victoria (East Africa)</strong><br>
+                            • Large transboundary lake<br>
+                            • Political boundaries<br>
+                            • Data sharing challenges<br>
+                            • Complex governance testing
+                        </div>
+                    </div>
+                    
+                    <p><strong>Purpose:</strong> Test method adaptability in both data-rich and data-scarce environments with varying governance complexities.</p>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Technical Implementation -->
+            <div class="step">
+                <div class="step-number">⚙</div>
+                <div class="step-title">Technical Implementation & Reproducibility</div>
+                <div class="step-content">
+                    <div class="tech-stack">
+                        <strong>Technology Stack:</strong> odc-stac Python module + STAC endpoint + xarray.Datasets
+                    </div>
+                    
+                    <p><strong>Data Access:</strong> Direct access to Digital Earth Africa's earth observation data via STAC endpoint, enabling loading of water extent, Sentinel-1, and Sentinel-2 data as xarray.Datasets.</p>
+                    
+                    <p><strong>Deployment Flexibility:</strong> Works locally or on cloud platforms (AWS) using open standards.</p>
+                    
+                    <div class="output-box">
+                        <strong>Benefits:</strong> Streamlined workflow, Full portability, Reproducible methods, Adoptable by other researchers/agencies across Africa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
